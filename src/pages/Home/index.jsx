@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { CardItem } from "../../components/CardItem";
 import { MyContext } from "../../components/Context";
@@ -10,6 +11,7 @@ export const Home = () => {
 
     const { items, setItems, setItem, rightMenu, setRightMenu } = useContext(MyContext);
     const [groupByCategory, setGroupByCategory] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.get('/items').then(response => {

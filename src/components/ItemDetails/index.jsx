@@ -8,7 +8,7 @@ export const ItemDetails = () => {
     
     return (
         <WrapperItemDetails>
-            <div onClick={() => setRightMenu("1")} style={{display: "flex", alignItems: "center", marginTop: "27px", marginBottom: "34px", cursor:"pointer"}}>
+            <div onClick={() => setRightMenu("1")} style={{display: "flex", alignItems: "center", marginTop: "27px", cursor:"pointer"}}>
                 <BackIcon/>
                 <span>back</span>
             </div>

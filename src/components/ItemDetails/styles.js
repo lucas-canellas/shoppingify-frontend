@@ -2,14 +2,16 @@ import { KeyboardBackspace } from "@material-ui/icons";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
-const slideRightToLeft = keyframes`
+/* const slideRightToLeft = keyframes`
   from {
     transform: translateX(100%);
   }
   to {
     transform: translateX(0);
   }
-`;
+
+      animation: ${slideRightToLeft} 0.5s ease-in-out;
+`; */
 
 export const WrapperItemDetails = styled.div`
     box-sizing: border-box;
@@ -19,7 +21,7 @@ export const WrapperItemDetails = styled.div`
     flex-direction: column;
     background: #FFFFFF;
     padding: 0 44px;
-    animation: ${slideRightToLeft} 0.5s ease-in-out;
+
 
     h1 {
         font-style: normal;
@@ -28,7 +30,7 @@ export const WrapperItemDetails = styled.div`
         line-height: 15px;
         color: #C1C1C4; 
         margin-bottom: 11.5px;
-        margin-top: 53px;
+        margin-top: 21px;
     }
 
     p {
@@ -60,6 +62,7 @@ export const Image = styled.img`
     height: 220px;
     object-fit: cover;
     border-radius: 25px; 
+    margin-top: 21px;
 
 `;
 

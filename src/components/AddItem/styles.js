@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
-const slideRightToLeft = keyframes`
+/* const slideRightToLeft = keyframes`
   from {
     transform: translateX(100%);
   }
@@ -10,6 +10,8 @@ const slideRightToLeft = keyframes`
   }
 `;
 
+    animation: ${slideRightToLeft} 0.5s ease-in-out; 
+ */
 export const Form = styled.form`
     box-sizing: border-box;
     display: flex;
@@ -17,7 +19,7 @@ export const Form = styled.form`
     width: 390px;
     height: 100%;
     padding: 0 40px;
-    animation: ${slideRightToLeft} 0.5s ease-in-out; 
+
 
     h1 {
         font-weight: 500;

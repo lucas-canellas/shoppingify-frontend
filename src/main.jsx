@@ -5,8 +5,13 @@ import './index.css'
 import { Home } from './pages/Home';
 import { History } from './pages/History';
 import { MyProvider } from './components/Context';
+import { SignUp } from './pages/SignUp';
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <SignUp />,
+  },
   {
     path: "/home",
     element: <Home />,
