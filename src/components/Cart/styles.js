@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Edit } from "@material-ui/icons";
 import {ReactComponent as Bottle} from "./../../assets/source.svg";
 
 export const WrapperCart = styled.div`
@@ -58,3 +59,60 @@ export const Button = styled.button`
     padding: 10px 20px;
 
 `;
+
+export const EditIcon = styled(Edit)``;
+
+export const WrapperTitleCart = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+
+    h1 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        color: #34333A;
+    }
+`;
+
+export const WrapperItemCart = styled.div`
+    margin-bottom: 57px;
+    h2 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #828282;
+    }
+`;
+
+export const WrapperItemCartInternal = styled.div`
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 24px;  
+    
+    p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+`;
+
+export const Quantity = styled.div`
+    width: 68px;
+    height: 32px;
+    border: 2px solid #F9A109;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F9A109;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+`;
+

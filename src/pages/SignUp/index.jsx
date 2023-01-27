@@ -8,7 +8,7 @@ export const SignUp = () => {
     const [changeForm, setChangeForm] = useState(true);
     const navigate = useNavigate();
 
-    const handleSignUp = (event) => {
+    const handleSignUp = async (event) => {
         event.preventDefault()
         const form = event.target;
         const data = new FormData(form);
@@ -18,18 +18,20 @@ export const SignUp = () => {
             password: data.get("password")
         }
 
-        api.post("/api/v1/auth/register", user).then(response => {
+        await api.post("/api/v1/auth/register", user).then(response => {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token); 
-                navigate("/home");
+                api.defaults.headers.authorization = `Bearer ${response.data.token}`;
+                setChangeForm(false);
             };
+            
         }).catch(error => {
             alert("Erro ao criar conta");
         })
         
     }
 
-    const handleSignIn = (event) => {
+    const handleSignIn = async (event) => {
         event.preventDefault()
         const form = event.target;
         const data = new FormData(form);
@@ -38,11 +40,12 @@ export const SignUp = () => {
             password: data.get("password")
         }
 
-        api.post("/api/v1/auth/authenticate", user).then(response => {
+        await api.post("/api/v1/auth/authenticate", user).then(response => {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token); 
+                api.defaults.headers.authorization = `Bearer ${response.data.token}`;
                 navigate("/home");
-            }
+            }            
         }).catch(error => {
             alert("Usuário ou senha inválidos");
         })

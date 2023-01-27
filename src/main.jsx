@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import { Home } from './pages/Home';
 import { History } from './pages/History';
-import { MyProvider } from './components/Context';
+import { MyProvider } from './context/Context';
 import { SignUp } from './pages/SignUp';
 
 const router = createBrowserRouter([

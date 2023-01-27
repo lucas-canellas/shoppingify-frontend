@@ -1,10 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../Button";
-import { MyContext } from "../Context";
+import { MyContext } from "../../context/Context";
 import { BackIcon, Image, Name, WrapperItemDetails } from "./styles";
+import { api } from "../../api/api";
 
 export const ItemDetails = () => {
-    const { item, rightMenu, setRightMenu } = useContext(MyContext);
+    const { item,setItems,  setRightMenu, setFetchItems} = useContext(MyContext);
+    const token = localStorage.getItem('token');    
+
+    const deleteItem = async () => {
+        try {
+            await api.delete(`/items/${item.id}`, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }).then(response => {
+                setFetchItems(true);
+                setRightMenu("1");             
+            })
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const addItemToCart = () => {
+        api.post(`/carts/add/${item.id}`, null, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        }).then(response => {
+            console.log(response);
+        })
+    }
     
     return (
         <WrapperItemDetails>
@@ -20,10 +48,10 @@ export const ItemDetails = () => {
             <h1>Descrição</h1>
             <p>{item.note}</p>
             <div style={{textAlign: "center", marginTop: "auto", marginBottom: "35px"}}>
-                <Button transparent={true}>
+                <Button onClick={() => deleteItem()}  transparent={true}>
                     Deletar
                 </Button>
-                <Button type="submit" color="#F9A109" transparent={false}>
+                <Button  onClick={addItemToCart} color="#F9A109" transparent={false}>
                     Adicionar a lista
                 </Button>
             </div>

@@ -3,18 +3,24 @@ import { api } from '../../api/api';
 import { Form, Input, TextArea } from './styles';
 import CreatableSelect from 'react-select/creatable';
 import { Button } from '../Button';
-import { MyContext } from '../Context';
+import { MyContext } from '../../context/Context';
+
 
 
 export const AddItem = () => {
     const [categories, setCategories] = useState([]);
-    const { items, setItems } = useContext(MyContext);
+    const { items, setItems, setRightMenu } = useContext(MyContext);
     const [selectedOption, setSelectedOption] = useState(null);
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
-        api.get('/categories').then(response => {
+        api.get('/categories', {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        }).then(response => {
             setCategories(response.data);
-        })
+        })        
     },[])
 
     const handleChange = (selectedOption) => {
@@ -32,22 +38,31 @@ export const AddItem = () => {
                 id: selectedOption.value
             }
         }
-        console.log(event.target);
-        api.post('/items', item).then(response => {
+        api.post('/items', item, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        }).then(response => {
             setItems([...items, response.data]);
         }).catch(error => {
             alert(error.response.data.userMessage);
         })
     };
 
+
+
     const createCategory = (name) => {
         const category = {
             name: name
         }
-        api.post('/categories', category).then(response => {
+        api.post('/categories', category, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        }).then(response => {
             setCategories([...categories, response.data]);
         }).catch(error => {
-            alert(error.response.data.userMessage);
+            alert(error);
         })
     }
 
@@ -103,9 +118,8 @@ export const AddItem = () => {
                     <Button type="submit" color="#F9A109" transparent={false}>
                         Cadastrar
                     </Button>
-                </div>
-                
-            </Form>
+                </div>                
+            </Form>      
         </>
     )
 }

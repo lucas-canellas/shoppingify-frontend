@@ -2,22 +2,37 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { CardItem } from "../../components/CardItem";
-import { MyContext } from "../../components/Context";
+import { MyContext } from "../../context/Context";
 
 import { Layout } from "../Layout"
 import { Title, WrapperCategories, WrapperItems } from "./styles";
 
 export const Home = () => { 
 
-    const { items, setItems, setItem, rightMenu, setRightMenu } = useContext(MyContext);
+    const { items, setItems, setItem,  setRightMenu, fetchItems, setFetchItems } = useContext(MyContext);
     const [groupByCategory, setGroupByCategory] = useState({});
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
+    useEffect(()=>{        
+        console.log(token);
+        if(!token){
+            navigate('/');
+        }
+    })
 
     useEffect(() => {
-        api.get('/items').then(response => {
-            setItems(response.data);           
-        })
-    },[]);
+        if(fetchItems) {
+            api.get('/items', {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }).then(response => {
+                setItems(response.data);
+                setFetchItems(false)
+            })
+        }
+    },[items, fetchItems])
 
     useEffect(() => {
         if(items.length > 0) {
@@ -35,7 +50,11 @@ export const Home = () => {
     },[items])
 
     const handleClick = (id) => {
-        api.get("/items/" + id).then(response => {
+        api.get("/items/" + id, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        }).then(response => {
             setItem(response.data);
             setRightMenu("2");
         })
