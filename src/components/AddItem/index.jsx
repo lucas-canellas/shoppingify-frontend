@@ -99,6 +99,10 @@ export const AddItem = () => {
         })
       };
 
+      const goAddItem = () => {
+        setRightMenu("Cart");
+      };
+
     return (
         <>
             <Form onSubmit={onSubmit}>
@@ -111,8 +115,8 @@ export const AddItem = () => {
                 <Input autoComplete='false' type="text" name="image" />
                 <label htmlFor="category">Categoria</label>
                 <CreatableSelect styles={customStyles} isClearable options={categoryOptions} onChange={handleChange} onCreateOption={createCategory} />
-                <div style={{textAlign: "center", marginTop: "auto", marginBottom: "35px"}}>
-                    <Button transparent={true}>
+                <div style={{textAlign: "center", marginTop: "auto", marginBottom: "35px", display: "flex", justifyContent: "center"}}>
+                    <Button onClick={goAddItem} transparent={true}>
                         Cancelar
                     </Button>
                     <Button type="submit" color="#F9A109" transparent={false}>
@@ -120,6 +124,7 @@ export const AddItem = () => {
                     </Button>
                 </div>                
             </Form>      
+            
         </>
     )
 }

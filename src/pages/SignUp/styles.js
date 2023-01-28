@@ -1,11 +1,27 @@
-import styled from "styled-components";
-import {ReactComponent as CartImage} from "./../../assets/undraw_shopping_app_flsj.svg";
+import styled, { keyframes } from "styled-components";
+import { ReactComponent as CartImage } from "./../../assets/undraw_shopping_app_flsj.svg";
+
+const blink = keyframes`
+    0% {
+        background-color: #FFF0DE;
+    }
+    
+    50% {
+        background-color: #FFF0DE70;
+    }
+    
+    100% {
+        background-color: #FFF0DE;
+    }
+`;
 
 export const WrapperPage = styled.div`
     display: flex;
     padding: 20px;
     box-sizing: border-box;
     height: 100vh;
+
+
 
 `;
 
@@ -40,7 +56,7 @@ export const WrapperBanner = styled.div`
     flex-direction: column;
     flex: 1;
     border-radius: 24px;
-    background: #FFF0DE;
+    animation: ${blink} 5s ease-in-out infinite;
     padding: 20px;
 
 `;

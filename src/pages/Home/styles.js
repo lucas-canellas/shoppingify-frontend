@@ -16,6 +16,7 @@ export const WrapperCategories = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
     gap: 20px;
+    
 
     h2 {
         font-weight: 500;

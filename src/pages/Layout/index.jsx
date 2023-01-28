@@ -4,18 +4,19 @@ import { Cart } from "../../components/Cart";
 import { MyContext } from "../../context/Context";
 import { ItemDetails } from "../../components/ItemDetails";
 import { Menu } from "../../components/Menu"
-import { WrapperAddItem, WrapperLayout } from "./styles"
+import { WrapperAddItem, WrapperChildren, WrapperLayout } from "./styles"
 
 export const Layout = ({children}) => {
     const {rightMenu} = useContext(MyContext);
     return (
         <WrapperLayout>
             <div><Menu/></div>
-            <div style={{paddingLeft: "80px", paddingTop: "35px"}}>{children}</div>
-            {rightMenu === "1" && <WrapperAddItem><AddItem /></WrapperAddItem>}
-            {rightMenu === "2" && <WrapperAddItem> <ItemDetails /> </WrapperAddItem>}
-            {rightMenu === "3" && <WrapperAddItem> <Cart /> </WrapperAddItem>}
-
+            <WrapperChildren>
+                {children}
+            </WrapperChildren>
+            {rightMenu === "AddItem" && <WrapperAddItem><AddItem /></WrapperAddItem>}
+            {rightMenu === "ItemDetails" && <WrapperAddItem><ItemDetails /></WrapperAddItem>}
+            {rightMenu === "Cart" && <WrapperAddItem> <Cart /> </WrapperAddItem>}
         </WrapperLayout>
     )
 }

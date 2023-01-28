@@ -1,15 +1,25 @@
-import styled from "styled-components";
-import { Edit } from "@material-ui/icons";
+import styled, { css } from "styled-components";
+import { Edit, Remove, Add, DeleteOutline } from "@material-ui/icons";
 import {ReactComponent as Bottle} from "./../../assets/source.svg";
+import { ReactComponent as CartImage } from "./../../assets/undraw_shopping_app_flsj.svg";
 
 export const WrapperCart = styled.div`
     box-sizing: border-box;
+    position: relative;
     width: 389px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     background: #FFF0DE;
-    padding: 43px 44px 35px;
+    padding: 43px 44px 78px 44px;
+    height: 100vh;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+    
+
 `;
 
 export const WrapperAddItemButtom = styled.div`
@@ -42,7 +52,7 @@ export const WrapperInternal = styled.div`
 
 `;
 
-export const Button = styled.button`
+export const ButtonStyled = styled.button`
     width: 150px;
     box-sizing: border-box;
     background: #FFFFFF;
@@ -59,8 +69,6 @@ export const Button = styled.button`
     padding: 10px 20px;
 
 `;
-
-export const EditIcon = styled(Edit)``;
 
 export const WrapperTitleCart = styled.div`
     display: flex;
@@ -85,13 +93,17 @@ export const WrapperItemCart = styled.div`
         font-size: 14px;
         line-height: 18px;
         color: #828282;
+        margin-bottom: 25px;
     }
 `;
 
 export const WrapperItemCartInternal = styled.div`
     display: flex;
     justify-content: space-between; 
-    margin-bottom: 24px;  
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    height: 48px;
     
     p {
         font-style: normal;
@@ -114,5 +126,178 @@ export const Quantity = styled.div`
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 21px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        border: 2px solid #F9A109;
+        font-weight: 800;
+        transform: scale(1.05);
+    }
 `;
+
+export const EditQuantity = styled.div`
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 173px;
+    height: 45px;
+    background: #FFFFFF;
+    border-radius: 12px;
+
+    div:nth-child(2) {
+        display: flex;
+        align-items: center;
+    }
+`;
+
+export const WrapperDeleteItemCart = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 37px;
+    border-radius: 12px;
+    background: #F9A109;
+    cursor: pointer;
+`;
+
+export const EditIcon = styled(Edit)`
+
+`;
+export const RemoveIcon = styled(Remove)`
+    cursor: pointer;
+    color: #F9A109;
+    transition: transform 0.2s ease-in-out;
+
+    &:active {
+        transform: translateY(2px);
+    }
+`;
+export const AddIcon = styled(Add)`
+    cursor: pointer;
+    color: #F9A109;
+    transition: transform 0.2s ease-in-out;
+
+    &:active {
+        transform: translateY(2px);
+    }
+`;
+
+export const DeleteIcon = styled(DeleteOutline)`
+    cursor: pointer;
+    color: #FFFFFF;
+    transition: transform 0.2s ease-in-out;
+
+    &:active {
+        transform: translateY(2px);
+    }
+`;
+
+export const WrapperSaveFixed = styled.div`
+    box-sizing: border-box;
+    margin-top: auto; 
+    background: #FFF; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 389px;
+    height: 131px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const WrapperInput = styled.form`
+    ${(props) => css`
+        display: flex;
+        border: ${props.border}};
+        border-radius: 16px;
+        width: 310px;
+        height: 61px
+        padding: 5px;
+    `}
+
+`;
+
+export const Input = styled.input`
+    width: 100%;
+    margin: 7px;
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #BDBDBD;
+    font-family: 'Quicksand';
+    background: #FFFFFF;
+`;
+
+export const WrapperNoItems = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 55px;
+
+    p {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        color: #34333A;
+        margin-top: 77px;
+    }
+`;
+
+export const CartImageStyled = styled(CartImage)`
+    margin-top: auto;
+`;
+
+export const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalContent = styled.div`
+    max-width: 500px;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 30px;
+    border-radius: 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: #34333A;
+    
+    p {
+        margin-bottom: 35px;
+    }
+
+    div {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+`;
+
+
+
+
+
+
 

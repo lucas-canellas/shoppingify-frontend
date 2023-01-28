@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ButtonStyled = styled.button`
     ${(props) => css`
-        width: max-content;
+        width: ${props.small ? "89px" : "max-content"};
         background: ${props.transparent ? "transparent" : props.color}; 
         border-radius: 12px;
         padding: 20px 25px;
@@ -11,5 +11,8 @@ export const ButtonStyled = styled.button`
         font-size: 16px;
         border: none;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     `}
 `;

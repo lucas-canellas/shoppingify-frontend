@@ -56,7 +56,7 @@ export const Home = () => {
             }
         }).then(response => {
             setItem(response.data);
-            setRightMenu("2");
+            setRightMenu("ItemDetails");
         })
     }
     
