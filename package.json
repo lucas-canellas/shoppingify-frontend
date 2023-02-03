@@ -22,6 +22,10 @@
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
     "vite-plugin-svgr": "^2.4.0"
+  },  
+  "peerDependencies": {
+    "@babel/core": "^7.0.0",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
