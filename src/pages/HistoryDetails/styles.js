@@ -1,4 +1,4 @@
-import { EventNoteRounded } from "@material-ui/icons";
+import { EventNoteRounded } from "@mui/icons-material";
 
 import styled from "styled-components";
 

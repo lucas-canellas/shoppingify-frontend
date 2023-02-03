@@ -1,4 +1,4 @@
-import { FormatListBulleted, Replay, InsertChartOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import { FormatListBulleted, Replay, InsertChartOutlined, ShoppingCartOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 import {ReactComponent as LogoIMG} from "./../../assets/logo.svg";
 

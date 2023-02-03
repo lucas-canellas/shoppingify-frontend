@@ -1,4 +1,5 @@
-import { Add } from "@material-ui/icons";
+
+import { Add } from "@mui/icons-material";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`

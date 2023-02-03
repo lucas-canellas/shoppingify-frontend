@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { EventNoteRounded, KeyboardArrowRight } from "@material-ui/icons";
+import { EventNoteRounded, KeyboardArrowRight } from "@mui/icons-material";
 
 
 export const WrapperHistory = styled.div`

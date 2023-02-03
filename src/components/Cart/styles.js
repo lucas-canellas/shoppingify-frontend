@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Edit, Remove, Add, DeleteOutline } from "@material-ui/icons";
+import { Edit, Remove, Add, DeleteOutline } from "@mui/icons-material";
 import {ReactComponent as Bottle} from "./../../assets/source.svg";
 import { ReactComponent as CartImage } from "./../../assets/undraw_shopping_app_flsj.svg";
 
