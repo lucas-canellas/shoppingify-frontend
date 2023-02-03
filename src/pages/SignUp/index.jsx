@@ -19,7 +19,7 @@ export const SignUp = () => {
             password: data.get("password")
         }
 
-        await api.post("/api/v1/auth/register/", user).then(response => {
+        await api.post("/api/v1/auth/register", user).then(response => {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token); 
                 api.defaults.headers.authorization = `Bearer ${response.data.token}`;
@@ -42,7 +42,7 @@ export const SignUp = () => {
             password: data.get("password")
         }
 
-        await api.post("/api/v1/auth/authenticate/", user).then(response => {
+        await api.post("/api/v1/auth/authenticate", user).then(response => {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token); 
                 api.defaults.headers.authorization = `Bearer ${response.data.token}`;
