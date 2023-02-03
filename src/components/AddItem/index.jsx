@@ -4,6 +4,7 @@ import { Form, Input, TextArea } from './styles';
 import CreatableSelect from 'react-select/creatable';
 import { Button } from '../Button';
 import { MyContext } from '../../context/Context';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -12,6 +13,17 @@ export const AddItem = () => {
     const { items, setItems, setRightMenu } = useContext(MyContext);
     const [selectedOption, setSelectedOption] = useState(null);
     const token = localStorage.getItem('token');
+
+    const notify = (message) => toast.error(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
     useEffect(() => {
         api.get('/categories', {
@@ -30,6 +42,12 @@ export const AddItem = () => {
     const onSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+
+        if (!selectedOption) {
+            notify("Selecione uma categoria");
+            return;
+        }
+
         const item = {
             name: formData.get('name'),
             note: formData.get('note'),
@@ -38,6 +56,8 @@ export const AddItem = () => {
                 id: selectedOption.value
             }
         }
+
+
         api.post('/items', item, {
             headers: {
                 "Authorization": "Bearer " + token
@@ -45,7 +65,7 @@ export const AddItem = () => {
         }).then(response => {
             setItems([...items, response.data]);
         }).catch(error => {
-            alert(error.response.data.userMessage);
+            notify(error.response.data.userMessage);
         })
     };
 
@@ -108,13 +128,13 @@ export const AddItem = () => {
             <Form onSubmit={onSubmit}>
                 <h1>Adicionar um novo item</h1>
                 <label htmlFor="name">Nome</label>
-                <Input autoComplete='false' type="text" name="name" />
+                <Input autoComplete='false' type="text" name="name" required/>
                 <label htmlFor="note">Anotação(Opcional)</label>
-                <TextArea type="text" name="note" />
+                <TextArea type="text" name="note" maxLength={100} />
                 <label htmlFor="image">Imagem(Opcional)</label>
                 <Input autoComplete='false' type="text" name="image" />
                 <label htmlFor="category">Categoria</label>
-                <CreatableSelect styles={customStyles} isClearable options={categoryOptions} onChange={handleChange} onCreateOption={createCategory} />
+                <CreatableSelect styles={customStyles} isClearable options={categoryOptions} onChange={handleChange} onCreateOption={createCategory} isRequired />
                 <div style={{textAlign: "center", marginTop: "auto", marginBottom: "35px", display: "flex", justifyContent: "center"}}>
                     <Button onClick={goAddItem} transparent={true}>
                         Cancelar

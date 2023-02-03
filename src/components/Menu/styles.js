@@ -16,6 +16,7 @@ export const MenuWrapper = styled.nav`
 export const MenuListWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 20px;
 `;
 export const Logo = styled(LogoIMG)`
     width: 40px;
@@ -23,11 +24,43 @@ export const Logo = styled(LogoIMG)`
     margin-top: 35px;
 `;
 
-export const MenuListIcon = styled(FormatListBulleted)``;
+export const WrapperIconMenu = styled.div`
+    width: 93px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+`;
 
-export const ReplayIcon = styled(Replay)``;
+export const TagMenu = styled.div`
+    width: 6px;
+    height: 45.98px;
+    background: #FFFFFF;
+    border-radius: 0px 4px 4px 0px;
+    margin-right: auto;
+    ${(props) => props.active && `
+        background: #F9A109;
+    `}
+`;
 
-export const InsertChartIcon = styled(InsertChartOutlined)``;
+export const MenuListIcon = styled(FormatListBulleted)`
+    position: relative;
+    right: 35px;
+    color: #454545;
+`;
+
+export const ReplayIcon = styled(Replay)`
+    position: relative;
+    right: 35px;
+    color: #454545;
+`;
+
+export const InsertChartIcon = styled(InsertChartOutlined)`
+    position: relative;
+    right: 35px;
+    color: #454545;
+`;
 
 export const WrapperShoppingCartIcon = styled.div`
     display: flex;

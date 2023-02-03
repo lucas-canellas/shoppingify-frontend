@@ -114,3 +114,6 @@ export const ButtonLoginImage = styled.button`
     cursor: pointer;  
     margin-bottom: 20px;  
 `;
+
+
+

@@ -47,3 +47,7 @@ input {
     font-family: 'Quicksand';
 }
 
+a {
+    text-decoration: none;
+}
+

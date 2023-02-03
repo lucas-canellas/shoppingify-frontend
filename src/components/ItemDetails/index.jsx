@@ -3,11 +3,25 @@ import { Button } from "../Button";
 import { MyContext } from "../../context/Context";
 import { BackIcon, Image, Name, WrapperItemDetails } from "./styles";
 import { api } from "../../api/api";
+import { toast } from 'react-toastify';
+
 
 export const ItemDetails = () => {
-    const { item, setItems, setRightMenu, setFetchItems } = useContext(MyContext);
+    const { item,  setRightMenu, setFetchItems, itemsCart, setItemsCart,  setFetchCarts,  setChangeQuantity, setFetchCartsHistory } = useContext(MyContext);
     const token = localStorage.getItem('token');
 
+
+
+    const notify = (message) => toast.error(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
     const deleteItem = async () => {
         try {
@@ -20,20 +34,38 @@ export const ItemDetails = () => {
                 setRightMenu("Cart");
             })
 
-        } catch (error) {
-            console.error(error);
+        } catch (error) {            
+            notify(error.response.data.userMessage)
         }
-    }
+    }   
+
 
     const addItemToCart = () => {
-        api.post(`/carts/add/${item.id}`, null, {
-            headers: {
-                "Authorization": "Bearer " + token
-            }
-        }).then(response => {
-            setRightMenu("Cart")
-        })
+        const itemAlreadyInCart = itemsCart.find(itemCart => itemCart.itemId === item.id);
+        
+        if (itemAlreadyInCart) {
+            const newCart = itemsCart.map(itemCart => {
+                if (itemCart.itemId === item.id) {
+                    return { ...itemCart, quantity: itemCart.quantity + 1 }
+                }
+                return itemCart;
+            })
+            setItemsCart(newCart);
+            setFetchCarts(true);
+            setChangeQuantity(true);
+            setFetchCartsHistory(true);
+
+            return;
+        }
+
+        setItemsCart([...itemsCart, { itemId: item.id, name: item.name, quantity: 1, category: {name: item.category.name} }]);
+        setFetchCarts(true);
+        setChangeQuantity(true);
+        setFetchCartsHistory(true);
+        setRightMenu("Cart");
     }
+
+    
 
     return (
         <>
@@ -57,6 +89,7 @@ export const ItemDetails = () => {
                         Adicionar a lista
                     </Button>
                 </div>
+
             </WrapperItemDetails>
 
         </>

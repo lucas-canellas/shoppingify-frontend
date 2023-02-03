@@ -4,8 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import { Home } from './pages/Home';
 import { History } from './pages/History';
+import { HistoryDetails } from './pages/HistoryDetails';
 import { MyProvider } from './context/Context';
 import { SignUp } from './pages/SignUp';
+import { Statistic } from './pages/Statistic';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: "/history",
     element: <History />,
+  }
+  ,{
+    path: "/history/:id",
+    element: <HistoryDetails />,
+  },
+  {
+    path: "/statistic",
+    element: <Statistic />,
   }
 ]);
 

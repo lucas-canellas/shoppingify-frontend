@@ -5,7 +5,8 @@ import { ButtonLogin, ButtonLoginImage, CartImageStyled, Form, WrapperBanner, Wr
 
 export const SignUp = () => {
 
-    const [changeForm, setChangeForm] = useState(true);
+    const [changeForm, setChangeForm] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSignUp = async (event) => {
@@ -33,6 +34,7 @@ export const SignUp = () => {
 
     const handleSignIn = async (event) => {
         event.preventDefault()
+        setLoading(true);
         const form = event.target;
         const data = new FormData(form);
         const user = {
@@ -78,7 +80,7 @@ export const SignUp = () => {
                         <label>
                             <input type="password" name="password" placeholder="Senha" />
                         </label>
-                        <ButtonLogin type="submit">Entrar</ButtonLogin>
+                        <ButtonLogin type="submit">{loading ? "Entrando..." : "Entrar"}</ButtonLogin>
                     </Form>
                 )}
 
@@ -86,12 +88,12 @@ export const SignUp = () => {
             <WrapperBanner>
                 {changeForm ? (
                     <ButtonLoginImage onClick={() => setChangeForm(false)}>
-                        Sing in
+                        Entrar
                     </ButtonLoginImage>
                 ) : (
 
                     <ButtonLoginImage onClick={() => setChangeForm(true)}>
-                        Sing up
+                        Cadastrar
                     </ButtonLoginImage>
                 )}
 

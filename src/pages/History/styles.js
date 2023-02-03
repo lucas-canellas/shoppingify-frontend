@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { EventNoteRounded, KeyboardArrowRight } from "@material-ui/icons";
 
 
@@ -7,16 +7,6 @@ export const WrapperHistory = styled.div`
     width: 100%;
     height: 100%;
     padding-right: 80px;
-
-    h1 {
-        font-style: normal;font-style: normal;
-        font-weight: 700;
-        font-size: 26px;
-        line-height: 32px;
-        color: #34333A; 
-        margin-bottom: 41px;
-    }
-
     h2 {
         font-style: normal;
         font-weight: 500;
@@ -27,6 +17,15 @@ export const WrapperHistory = styled.div`
         margin-bottom: 18px;
     }
 `;
+
+export const HistoryTitle = styled.h1`
+    font-style: normal;font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    color: #34333A; 
+    margin-bottom: 41px;
+`
 
 export const WrapperCardHistory = styled.div`
     display: flex;
@@ -93,4 +92,29 @@ export const IconArrow = styled(KeyboardArrowRight)`
     color: #F9A109;
     width: 15px;
     margin-left: 32.7px;
+`;
+
+const SkeletonWrapper = styled.div`
+  width: 100%;
+  height: 63px;
+  border-radius: 12px;
+  padding: 0 20px;
+  background-color: #E5E5E5;
+  animation: pulse 1s ease-in-out infinite;
+`;
+
+const Pulse = keyframes`
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.4;
+  }
+`;
+
+export const AnimatedSkeletonWrapper = styled(SkeletonWrapper)`
+  animation: ${Pulse} 1s ease-in-out infinite;
 `;
