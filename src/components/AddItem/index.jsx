@@ -26,7 +26,7 @@ export const AddItem = () => {
     });
 
     useEffect(() => {
-        api.get('/categories', {
+        api.get('/categories/', {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -58,7 +58,7 @@ export const AddItem = () => {
         }
 
 
-        api.post('/items', item, {
+        api.post('/items/', item, {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -75,7 +75,7 @@ export const AddItem = () => {
         const category = {
             name: name
         }
-        api.post('/categories', category, {
+        api.post('/categories/', category, {
             headers: {
                 "Authorization": "Bearer " + token
             }
