@@ -8,9 +8,13 @@ export const MenuWrapper = styled.nav`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;  
-    width: 93px;
+    width: 60px;
     height: 100vh;
     background-color: #FFF;
+
+    @media (min-width: 768px) {
+        width: 93px;
+    }
 `;
 
 export const MenuListWrapper = styled.div`
@@ -34,7 +38,7 @@ export const WrapperIconMenu = styled.div`
 `;
 
 export const TagMenu = styled.div`
-    width: 6px;
+    width: 20px;
     height: 45.98px;
     background: #FFFFFF;
     border-radius: 0px 4px 4px 0px;
@@ -42,6 +46,12 @@ export const TagMenu = styled.div`
     ${(props) => props.active && `
         background: #F9A109;
     `}
+
+    @media (min-width: 768px) {
+        width: 6px;
+    }
+
+
 `;
 
 export const MenuListIcon = styled(FormatListBulleted)`

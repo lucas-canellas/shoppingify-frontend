@@ -69,6 +69,7 @@ export const SignUp = () => {
                             <input type="password" name="password" placeholder="Senha" />
                         </label>
                         <ButtonLogin type="submit">Criar conta</ButtonLogin>
+                        <p onClick={() => setChangeForm(false)}>Já possui uma conta?</p>
                     </Form>
                 ) : (
                     <Form onSubmit={handleSignIn}>
@@ -81,6 +82,7 @@ export const SignUp = () => {
                             <input type="password" name="password" placeholder="Senha" />
                         </label>
                         <ButtonLogin type="submit">{loading ? "Entrando..." : "Entrar"}</ButtonLogin>
+                        <p onClick={() => setChangeForm(true)}>Ainda não possui uma conta ?</p>
                     </Form>
                 )}
 

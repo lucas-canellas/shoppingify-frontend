@@ -9,18 +9,13 @@ export const MyProvider = ({ children }) => {
     const [fetchItems, setFetchItems] = useState(true)
     const [fetchCartsHistory, setFetchCartsHistory] = useState(true);
     const [itemsCart, setItemsCart] = useState([]);
-    const [edit, setEdit] = useState(true);
     const [cart, setCart] = useState([]);
-    
-    const [groupItemCart, setGroupItemCart] = useState({});
     const [fetchCarts, setFetchCarts] = useState(false);
     const [changeQuantity, setChangeQuantity] = useState(false);
+    const [showChildren, setShowChildren] = useState(true);
 
-
-
-    
     return (
-        <MyContext.Provider value={{ items, setItems, item, setItem, rightMenu, setRightMenu, fetchItems, setFetchItems, itemsCart, setItemsCart, edit, setEdit, cart, setCart, groupItemCart, setGroupItemCart, fetchCarts, setFetchCarts, changeQuantity, setChangeQuantity, fetchCartsHistory, setFetchCartsHistory  }}>
+        <MyContext.Provider value={{ items, setItems, item, setItem, rightMenu, setRightMenu, fetchItems, setFetchItems, itemsCart, setItemsCart, cart, setCart, fetchCarts, setFetchCarts, changeQuantity, setChangeQuantity, fetchCartsHistory, setFetchCartsHistory,showChildren, setShowChildren }}>
             {children}
         </MyContext.Provider>
     );

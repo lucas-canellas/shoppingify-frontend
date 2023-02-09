@@ -20,9 +20,6 @@ export const WrapperPage = styled.div`
     padding: 20px;
     box-sizing: border-box;
     height: 100vh;
-
-
-
 `;
 
 export const WrapperForm = styled.div`
@@ -39,8 +36,7 @@ export const WrapperForm = styled.div`
 
         span {
             color: #80485B;
-        }
-        
+        }        
     }
 
     h2 {
@@ -59,6 +55,9 @@ export const WrapperBanner = styled.div`
     animation: ${blink} 5s ease-in-out infinite;
     padding: 20px;
 
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const CartImageStyled = styled(CartImage)`
@@ -85,6 +84,13 @@ export const Form = styled.form`
         padding: 10px;
         margin-bottom: 20px;
         font-family: 'Quicksand', sans-serif;
+    }
+
+    p {
+        text-align: right;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
     }
 `;
 

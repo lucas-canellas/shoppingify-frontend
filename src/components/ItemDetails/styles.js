@@ -15,12 +15,16 @@ import { keyframes } from "styled-components";
 
 export const WrapperItemDetails = styled.div`
     box-sizing: border-box;
-    width: 389px;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
     padding: 0 44px;
+
+    @media (min-width: 768px) {
+        width: 389px;
+    }
 
 
     h1 {

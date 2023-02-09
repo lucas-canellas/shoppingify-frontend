@@ -7,7 +7,7 @@ import { History } from './pages/History';
 import { HistoryDetails } from './pages/HistoryDetails';
 import { MyProvider } from './context/Context';
 import { SignUp } from './pages/SignUp';
-import { Statistic } from './pages/Statistic';
+import { Statistics } from './pages/Statistics';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/statistic",
-    element: <Statistic />,
+    element: <Statistics />,
   }
 ]);
 

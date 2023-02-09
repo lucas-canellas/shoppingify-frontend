@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom"
 import {InsertChartIcon, Logo, MenuListIcon, MenuListWrapper, MenuWrapper, ReplayIcon, ShoppingCartIcon, TagMenu, WrapperIconMenu, WrapperShoppingCartIcon } from "./styles"
+import { MyContext } from '../../context/Context';
 
 export const Menu = () => {
+
+    const {rightMenu, showChildren, setRightMenu} = useContext(MyContext);
 
     const currentPath = window.location.pathname;
 
@@ -28,7 +32,7 @@ export const Menu = () => {
                     </WrapperIconMenu>
                 </Link>
             </MenuListWrapper>
-            <WrapperShoppingCartIcon>
+            <WrapperShoppingCartIcon onClick={() => setRightMenu("Cart")}>
                 <ShoppingCartIcon/>
             </WrapperShoppingCartIcon>
         </MenuWrapper>

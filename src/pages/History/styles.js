@@ -15,6 +15,7 @@ export const WrapperHistory = styled.div`
         color: #000000;
         text-transform: capitalize;
         margin-bottom: 18px;
+        margin-top: 18px;
     }
 `;
 
@@ -42,6 +43,11 @@ export const CardHistory = styled.div`
     padding: 0 20px;
     display: flex;
     align-items: center;
+    overflow-y: scroll;
+
+    @media (min-width: 768px) {
+      overflow-y: hidden;
+    }
 `;
 
 

@@ -7,16 +7,22 @@ export const WrapperCart = styled.div`
     box-sizing: border-box;
     position: relative;
     width: 389px;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     background: #FFF0DE;
-    padding: 43px 44px 78px 44px;
+    padding: 15px;
     height: 100vh;
     overflow-y: scroll;
     ::-webkit-scrollbar {
         width: 0px;
         background: transparent;
+    }
+
+    @media (min-width: 768px) {
+        width: 389px;
+        padding: 43px 44px 78px 44px;
     }
     
 
@@ -205,10 +211,20 @@ export const WrapperSaveFixed = styled.div`
     bottom: 0;
     right: 0;
     width: 389px;
-    height: 131px;
+    /* height: 131px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    width: -webkit-fill-available;
+    margin-left: 60px;
+    padding: 18px;
+
+    @media (min-width: 768px) {
+        width: 389px;
+        margin-left: 0;
+        padding: 0px;
+        height: 131px;
+    }
 `;
 
 export const WrapperInput = styled.form`
@@ -244,7 +260,7 @@ export const WrapperNoItems = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
-    padding-bottom: 55px;
+    padding-bottom: 83px;
 
     p {
         font-style: normal;
@@ -253,6 +269,10 @@ export const WrapperNoItems = styled.div`
         line-height: 25px;
         color: #34333A;
         margin-top: 77px;
+    }
+
+    @media (min-width: 768px) {
+        padding-bottom: 52px;
     }
 `;
 

@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import jwt_decode from "jwt-decode";
 
 export const Layout = ({children}) => {
-    const {rightMenu} = useContext(MyContext);
+    const {rightMenu, showChildren} = useContext(MyContext);
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     
@@ -32,7 +32,7 @@ export const Layout = ({children}) => {
     return (
         <WrapperLayout>
             <div><Menu/></div>
-            <WrapperChildren>
+            <WrapperChildren showChildren={showChildren}>
                 {children}
             </WrapperChildren>
             {rightMenu === "AddItem" && <WrapperAddItem><AddItem /></WrapperAddItem>}

@@ -8,14 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
 
-    const { setRightMenu, itemsCart, setItemsCart, edit, cart, setCart, groupItemCart, setGroupItemCart, fetchCarts, setFetchCarts, changeQuantity, setChangeQuantity } = useContext(MyContext);
+    const { setRightMenu, itemsCart, setItemsCart, edit, cart, setCart, fetchCarts, setFetchCarts, changeQuantity, setChangeQuantity } = useContext(MyContext);
     const token = localStorage.getItem("token");  
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [completeOrCancel, setCompleteOrCancel] = useState(false);
     const [loading, setLoading] = useState(false);
-    
-    
+    const [groupItemCart, setGroupItemCart] = useState({});    
 
     const goAddItem = () => {
         setRightMenu("AddItem");

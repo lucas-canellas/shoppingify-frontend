@@ -9,6 +9,10 @@ export const Title = styled.h1`
     span {
         color: #F9A109;
     }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const WrapperCategories = styled.div`

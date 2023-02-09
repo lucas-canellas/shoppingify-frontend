@@ -8,8 +8,9 @@ export const WrapperLayout = styled.div`
 `;
 
 export const WrapperChildren = styled.div`
+    position: relative;
     box-sizing: border-box;
-    padding-left: 80px;
+    padding-left: 15px;
     padding-top: 35px;
     padding-bottom: 35px;
     height: 100vh;
@@ -19,8 +20,23 @@ export const WrapperChildren = styled.div`
         width: 0px;
         background: transparent;
     }
+    display: ${props => props.showChildren ? 'initial' : 'none'};
+
+    @media (min-width: 768px) {
+        padding-left: 80px;
+    }
+
+    
 `;
 
 export const WrapperAddItem = styled.div`
     margin-left: auto;
+    position: absolute;
+    margin-left: 60px;
+    width: -webkit-fill-available;
+
+    @media (min-width: 768px) {
+        width: 389px;
+        position: relative;
+    }
 `;

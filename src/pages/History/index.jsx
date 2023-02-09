@@ -15,7 +15,14 @@ export const History = () => {
     const token = localStorage.getItem("token")
     const [groupByMonthYearState, setGroupByMonthYearState] = useState({});
     const [loading, setLoading] = useState(true);
-    const { fetchCartsHistory, setFetchCartsHistory, cart, setCart } = useContext(MyContext);
+    const { fetchCartsHistory, setFetchCartsHistory, cart, setCart, setRightMenu } = useContext(MyContext);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        if (mediaQuery.matches) {
+            setRightMenu("none");
+        }
+    }, []);
 
     useEffect(() => {
         if(fetchCartsHistory) {

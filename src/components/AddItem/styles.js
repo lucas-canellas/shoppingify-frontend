@@ -3,10 +3,16 @@ import styled from "styled-components";
 export const Form = styled.form`
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;   
-    width: 390px;
+    flex-direction: column;
     height: 100%;
     padding: 0 40px;
+    width: 100%;
+    background: #fafafe;
+
+    @media (min-width: 768px) {
+        width: 389px;
+    }
+    
 
 
     h1 {

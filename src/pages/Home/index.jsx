@@ -14,6 +14,13 @@ export const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        if (mediaQuery.matches) {
+            setRightMenu("none");
+        }
+    }, []);
+
+    useEffect(() => {
         if (fetchItems) {
             api.get('/items', {
                 headers: {
