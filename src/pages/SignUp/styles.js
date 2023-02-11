@@ -121,5 +121,54 @@ export const ButtonLoginImage = styled.button`
     margin-bottom: 20px;  
 `;
 
+export const ModalTransition = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: 9999;    
+`;
+
+export const Modal = styled.div`
+    max-width: 320px;
+    width: 100%;
+    background: #FFF;
+    border-radius: 24px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Loader = styled.div`
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: ${rotate} 1s linear infinite;
+`;
+
+
+
 
 
