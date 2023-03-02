@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL:
-    "https://shoppingify-web-service.onrender.com",
+    "https://shoppingify-api-production.up.railway.app",
 });
 
 
