@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { api } from "../../api/api"
 import { Statistic } from "../../components/Statistic"
+import { MyContext } from "../../context/Context"
 import { Layout } from "../Layout"
-import { MyContext } from "../../context/Context";
 
 export const Statistics = () => {
-    
+
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState([]);
     const { setRightMenu } = useContext(MyContext);
@@ -24,7 +24,7 @@ export const Statistics = () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         }).then(res => setItems(res.data))
-    },[])
+    }, [])
 
     useEffect(() => {
         api.get("/categories/top-categories", {
@@ -32,13 +32,17 @@ export const Statistics = () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         }).then(res => setCategories(res.data))
-    },[])
+    }, [])
 
     return (
         <Layout>
             <WrapperStatistic>
-                <Statistic title="Top itens" data={items} color="#F9A109" />
-                <Statistic title="Top categorias" data={categories} color="#56CCF2" />
+                {items.length == 0 ? <p>Não há dados para exibir</p> : (
+                    <>
+                        <Statistic title="Top itens" data={items} color="#F9A109" />
+                        <Statistic title="Top categorias" data={categories} color="#56CCF2" />
+                    </>
+                )}
             </WrapperStatistic>
         </Layout>
     )

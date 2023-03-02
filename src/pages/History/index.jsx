@@ -1,11 +1,11 @@
-import moment from "moment/moment";
-import { useContext, useEffect, useState} from "react";
-import { api } from "../../api/api";
-import { Layout } from "../Layout";
 import 'moment/locale/pt-br';
-import { AnimatedSkeletonWrapper, CardHistory, DateHistory, HistoryTitle, IconArrow, IconHistory, ListName, StatusHistory, WrapperCardHistory, WrapperHistory } from "./styles";
+import moment from "moment/moment";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../../api/api";
 import { MyContext } from "../../context/Context";
+import { Layout } from "../Layout";
+import { CardHistory, DateHistory, HistoryTitle, IconArrow, IconHistory, ListName, StatusHistory, WrapperCardHistory, WrapperHistory } from "./styles";
 
 
 
@@ -14,7 +14,7 @@ export const History = () => {
 
     const token = localStorage.getItem("token")
     const [groupByMonthYearState, setGroupByMonthYearState] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const { fetchCartsHistory, setFetchCartsHistory, cart, setCart, setRightMenu } = useContext(MyContext);
 
     useEffect(() => {
@@ -40,6 +40,7 @@ export const History = () => {
 
     useEffect(() => {        
         if(cart.length > 0) {
+            setLoading(false);
             const groupByMonthYear = (data) => {
                 moment.locale('pt-br');
                 let result = {};
@@ -66,6 +67,7 @@ export const History = () => {
         <Layout>
             <WrapperHistory>
                 <HistoryTitle>Histórico de compras</HistoryTitle>
+                <p>{cart.length == 0 && "Não existe nenhuma lista salva"}</p>
                 {loading ? "Carregando..." : (
                     Object.keys(groupByMonthYearState).map((monthYear, index) => {
                         return (
