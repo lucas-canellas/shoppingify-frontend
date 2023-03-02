@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react"
-import { api } from "../../api/api";
-import { MyContext } from "../../context/Context"
-import { Button } from "../Button";
-import { AddIcon, BottleImage, ButtonStyled, CartImageStyled, DeleteIcon, EditIcon, EditQuantity, Input, ModalContent, ModalWrapper, Quantity, RemoveIcon, WrapperAddItemButtom, WrapperCart, WrapperDeleteItemCart, WrapperInput, WrapperInternal, WrapperItemCart, WrapperItemCartInternal, WrapperNoItems, WrapperSaveFixed, WrapperTitleCart } from "./styles"
-import { toast } from 'react-toastify';
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { api } from "../../api/api";
+import { MyContext } from "../../context/Context";
+import { Button } from "../Button";
+import { AddIcon, BottleImage, ButtonStyled, CartImageStyled, DeleteIcon, EditIcon, EditQuantity, Input, ModalContent, ModalWrapper, Quantity, RemoveIcon, WrapperAddItemButtom, WrapperCart, WrapperDeleteItemCart, WrapperInput, WrapperInternal, WrapperItemCart, WrapperItemCartInternal, WrapperNoItems, WrapperSaveFixed, WrapperTitleCart } from "./styles";
 
 export const Cart = () => {
 

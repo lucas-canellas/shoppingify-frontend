@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { Button } from "../Button";
-import { MyContext } from "../../context/Context";
-import { BackIcon, Image, Name, WrapperItemDetails } from "./styles";
-import { api } from "../../api/api";
+import { useContext } from "react";
 import { toast } from 'react-toastify';
+import { api } from "../../api/api";
+import { MyContext } from "../../context/Context";
+import { Button } from "../Button";
+import { BackIcon, Image, Name, WrapperItemDetails } from "./styles";
 
 
 export const ItemDetails = () => {
@@ -79,7 +79,7 @@ export const ItemDetails = () => {
                 <Name>{item.name}</Name>
                 <h1>Categoria</h1>
                 <p>{item.category?.name}</p>
-                <h1>Descrição</h1>
+                <h1>{item.note && "Descrição"}</h1>
                 <p>{item.note}</p>
                 <div style={{ textAlign: "center", marginTop: "auto", marginBottom: "35px", display: "flex", justifyContent: "center" }}>
                     <Button onClick={deleteItem} transparent={true}>
