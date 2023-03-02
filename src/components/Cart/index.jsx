@@ -71,26 +71,25 @@ export const Cart = () => {
             navigate("/history");
         })
     }
-
     useEffect(() => {
         if(changeQuantity) {
             if (itemsCart.length > 0) {
-                const groupedItems = itemsCart.reduce((acc, item) => {
-                    
-                    if (!acc[item.category.name]) {
-                        acc[item.category.name] = { title: item.category.name, items: [] };
-                    }
-                    acc[item.category.name].items.push(item);
-        
-                    return acc;
-                }, {});
-        
+                const groupedItems = groupItemsByCategory(itemsCart);
                 setGroupItemCart(groupedItems);
                 setFetchCarts(false);        
-
             }
         }
-    },[itemsCart, changeQuantity])
+    }, [itemsCart, changeQuantity]);
+
+    function groupItemsByCategory(itemsCart) {
+        return itemsCart.reduce((acc, item) => {
+            if (!acc[item.category.name]) {
+                acc[item.category.name] = { title: item.category.name, items: [] };
+            }
+            acc[item.category.name].items.push(item);
+            return acc;
+        }, {});
+    }
 
     const handleClick = (e) => {
         const box_edit = e.target.parentElement.children[2];
@@ -142,10 +141,13 @@ export const Cart = () => {
 
     const deleteItem = (item) => {
         const index = itemsCart.indexOf(item);
-        const itemsCart2 = itemsCart;
+        const itemsCart2 = itemsCart.slice();
         itemsCart2.splice(index, 1);
-        setItemsCart(itemsCart2);  
+        setItemsCart(itemsCart2);
+        const groupedItems = groupItemsByCategory(itemsCart2);
+        setGroupItemCart(groupedItems);
         setChangeQuantity(!changeQuantity);
+        console.log(itemsCart2);
     }
 
 

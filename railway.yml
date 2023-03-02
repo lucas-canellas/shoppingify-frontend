@@ -1,0 +1,7 @@
+- name: Install dependencies
+  command: npm install --production
+
+- name: Build
+  command: npm run build
+  env:
+    NODE_ENV: production
