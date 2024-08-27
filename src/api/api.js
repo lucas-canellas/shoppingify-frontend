@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL:
-    "https://shoppingify-api-production.up.railway.app",
+    "http://191.252.177.146:8080",
 });
 
 
