@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL:
-    "http://191.252.177.146:8080",
+    "https://vps54556.publiccloud.com.br:8080",
 });
 
 
